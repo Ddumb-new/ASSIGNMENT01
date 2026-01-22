@@ -40,4 +40,3 @@ prompt.get(["userSelection"], function (err, result) {
         console.log("Computer Wins!");
     }
 });
-//# sourceMappingURL=lab2.js.map
