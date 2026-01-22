@@ -1,34 +1,50 @@
 import express from 'express';
-// 1️⃣ Define your calculate function here
-function calculate(method, x, y) {
-    switch (method) {
-        case "add":
-            return `${x} + ${y} = ${x + y}`;
-        case "subtract":
-            return `${x} - ${y} = ${x - y}`;
-        case "multiply":
-            return `${x} * ${y} = ${x * y}`;
-        case "divide":
-            if (y === 0)
-                return `Error: Division by zero`;
-            return `${x} / ${y} = ${x / y}`;
-        default:
-            return `Error: Unknown method '${method}'`;
-    }
-}
-// 2️⃣ Set up Express
+// Creating an instance for express app and defining the port number
 const app = express();
 const port = 3000;
-// 3️⃣ Express route that uses the calculate function
-app.get('/lab2', (req, res) => {
+//Redirecting root to /lab3 with default parameters
+app.get('/', (req, res) => {
+    res.redirect('/lab3?method=add&x=4&y=6');
+});
+// Defining the /lab3 route to handle arithmetic operations
+app.get('/lab3', (req, res) => {
     const method = req.query.method;
     const x = Number(req.query.x);
     const y = Number(req.query.y);
-    const result = calculate(method, x, y);
-    res.send(result);
+    // Validating query parameters
+    if (!method || isNaN(x) || isNaN(y)) {
+        return res.send('Error: Please provide method, x, and y as query parameters.');
+    }
+    let result;
+    let operator;
+    // Performing the requested arithmetic operation
+    switch (method.toLowerCase()) {
+        case 'add':
+            result = x + y;
+            operator = '+';
+            break;
+        case 'subtract':
+            result = x - y;
+            operator = '-';
+            break;
+        case 'multiply':
+            result = x * y;
+            operator = '*';
+            break;
+        case 'divide':
+            if (y === 0)
+                return res.send('Error: Division by zero is not allowed.');
+            result = x / y;
+            operator = '/';
+            break;
+        default:
+            return res.send(`Error: Invalid method "${method}". Use add, subtract, multiply, or divide.`);
+    }
+    // Sending the result back to the client
+    res.send(`${x} ${operator} ${y} = ${result}`);
 });
-// 4️⃣ Start the server
+// Starting the server
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log(`Server is running at http://localhost:${port}`);
 });
 //# sourceMappingURL=server.js.map
