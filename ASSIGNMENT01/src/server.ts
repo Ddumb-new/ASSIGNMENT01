@@ -2,6 +2,7 @@
 
 import express, { Request, Response, NextFunction } from "express";
 import router from "./routes/index";
+import { logger } from "./middleware/logger";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -9,12 +10,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware to parse JSON
 app.use(express.json());
 
-// Custom middleware: logger
-app.use((req: Request, res: Response, next: NextFunction) => {
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
-  next();
-});
-
+app.use(logger);
 // Use routes
 app.use(router);
 

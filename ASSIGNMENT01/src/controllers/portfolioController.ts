@@ -19,13 +19,13 @@ const projects = [
     id: 1,
     name: "Personal Portfolio Website",
     description: "A responsive portfolio website built with HTML, CSS, and JS.",
-    url: "https://github.com/username/portfolio"
+    url: "https://github.com/Ddumb/portfolio"
   },
   {
     id: 2,
     name: "Todo API",
     description: "A RESTful API for managing todo tasks using Node.js and Express.",
-    url: "https://github.com/username/todo-api"
+    url: "https://github.com/Ddumb/todo-api"
   }
 ];
 
