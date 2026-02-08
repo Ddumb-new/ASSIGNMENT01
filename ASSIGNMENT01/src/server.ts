@@ -1,5 +1,3 @@
-// src/server.ts
-
 import express, { Request, Response, NextFunction } from "express";
 import router from "./routes/index";
 import { logger } from "./middleware/logger";
@@ -10,6 +8,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware to parse JSON
 app.use(express.json());
 
+// Custom logger middleware
 app.use(logger);
 // Use routes
 app.use(router);

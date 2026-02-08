@@ -1,5 +1,3 @@
-// src/controllers/portfolioController.ts
-
 import { Request, Response } from "express";
 
 // In-memory portfolio data
@@ -58,7 +56,7 @@ export const postContact = (req: Request, res: Response) => {
   res.status(201).json({ message: "Contact message received successfully." });
 };
 
-// Optional: export contact messages for testing (can remove later)
+// For getting the contact messages (for testing purposes)
 export const getContactMessages = (req: Request, res: Response) => {
   res.status(200).json(contactMessages);
 };
