@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign-Up Demo</title>
+  </head>
+  <body>
+    <h1>Sign-Up Demo (Create & Read)</h1>
+
+    <h3>Create a Signup</h3>
+    <input id="name" placeholder="Name" />
+    <input id="email" placeholder="Email" />
+    <button onclick="createSignup()">Create</button>
+
+    <h3>All Signups</h3>
+    <button onclick="listSignups()">List All</button>
+    <pre id="output"></pre>
+
+    <script>
+      async function createSignup() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+
+        if (!name || !email) {
+          alert("Please enter both name and email!");
+          return;
+        }
+
+        const res = await fetch("/signups", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email }),
+        });
+
+        const data = await res.json();
+        if (data._id) {
+          alert("Signup created! ID: " + data._id);
+        } else {
+          alert("Error: " + (data.error || "unknown"));
+        }
+      }
+
+      async function listSignups() {
+        const res = await fetch("/signups");
+        const data = await res.json();
+        document.getElementById("output").innerText = JSON.stringify(
+          data,
+          null,
+          2
+        );
+      }
+    </script>
+  </body>
+</html>
