@@ -5,18 +5,21 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/server.ts",
-  "build": "tsc",
-  "start": "node dist/server.js"
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "express": "^5.2.1"
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.3.3"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
+    "@types/mongoose": "^5.11.96",
     "@types/node": "^25.1.0",
     "nodemon": "^3.1.11",
     "ts-node": "^10.9.2",

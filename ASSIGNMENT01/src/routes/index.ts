@@ -1,17 +1,13 @@
-// src/routes/index.ts
+
 
 import { Router } from "express";
-import { getProfile, getAbout, getProjects, postContact, getContactMessages } from "../controllers/portfolioController";
-
+import playerRoutes from "./playerRoutes";
+import tournamentRoutes from "./tournamentRoutes";
 const router = Router();
 
-// Portfolio API routes
-router.get("/api/profile", getProfile);
-router.get("/api/about", getAbout);
-router.get("/api/projects", getProjects);
-router.post("/api/contact", postContact);
 
-// Optional: testing route to see all messages
-router.get("/api/messages", getContactMessages);
+router.use("/api/tournaments", tournamentRoutes);
+
+router.use("/api/players", playerRoutes);
 
 export default router;
