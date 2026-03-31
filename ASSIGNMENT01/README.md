@@ -60,11 +60,13 @@ Swagger API documentation is available at:
 http://localhost:5000/api-docs
 ```
 
- (Replace with deployed URL after Vercel deployment)
+assignment-01-pea2.vercel.app
+assignment-01-pea2-git-main-ddumb-news-projects.vercel.app
+assignment-01-pea2-q94onxcnv-ddumb-news-projects.vercel.app
 
 ---
 
-## 💻 Frontend (Next.js)
+##  Frontend (Next.js)
 
 The frontend was built using Next.js and exported as a static site.
 
@@ -105,7 +107,7 @@ The application is deployed using **Vercel**.
 ###  Production URL
 
 ```
-(PASTE YOUR VERCEL LINK HERE)
+https://vercel.com/ddumb-news-projects/assignment-01-pea2/7jiqvcjy3JYbcEQCDAsXHr9d75Aq
 ```
 
 ###  Deployment Settings
