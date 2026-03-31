@@ -15,32 +15,32 @@ app.use(cors());
 app.use(express.json());
 app.use(logger);
 
-// 🔹 API routes
+// API routes
 app.use("/api", router);
 
-// 🔹 Serve static frontend
+// Serve static frontend
 app.use(express.static(path.join(__dirname, "../public")));
 
-// 🔹 Root route
+// Root route
 app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-// 🔹 404 API fallback
+// 404 API fallback
 app.use((req: Request, res: Response) => {
   res.status(404).json({ error: "Route not found" });
 });
 
-// 🔹 Error handler
+// Error handler
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
   res.status(500).json({ error: "Something went wrong!" });
 });
 
-// 🔹 DB
+// DB
 connectDB();
 
-// 🔹 Start server
+// Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
