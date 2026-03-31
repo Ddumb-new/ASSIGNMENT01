@@ -1,200 +1,184 @@
-# Personal Portfolio API
+#  Tournament Management System API + Frontend
 
-## Description
-This project is a REST-style Personal Portfolio API built using TypeScript and Express.  
-It provides JSON endpoints to serve portfolio data including profile information, about me details, projects, and contact messages.  
+##  Date
 
-This API is designed to demonstrate backend development using Node.js, TypeScript, and Express, and is fully deployed **live on Render**.
+March 30, 2026
 
 ---
 
-## Live Deployed API
-You can access the live API here:  
-[https://portfolioapi-levc.onrender.com](https://portfolioapi-levc.onrender.com)
+## Project Overview
+
+This project is a full-stack Tournament Management System built using:
+
+* **Backend:** Node.js, Express, MongoDB
+* **Frontend:** Next.js (React)
+* **Deployment:** Vercel
+
+The application allows users to:
+
+* Create tournaments
+* View tournaments
+* Edit tournaments
+* Delete tournaments
+* Register players
+* View tournament details
 
 ---
 
-## Project Structure
+##  Backend API (Express)
 
-ASSIGNMENT01/
-├─ package.json
-├─ tsconfig.json
-├─ src/
-│ ├─ server.ts # Main server file
-│ ├─ routes/
-│ │ └─ index.ts # All API routes
-│ ├─ controllers/
-│ │ └─ portfolioController.ts # Logic for each endpoint
-│ └─ middleware/
-│ └─ logger.ts # Custom middleware for logging requests
+The backend provides RESTful APIs for managing tournaments and players.
 
+###  Base URL
+
+```
+http://localhost:5000/api
+```
+
+###  Routes
+
+####  Tournaments
+
+ `GET /api/tournaments` → Get all tournaments
+`GET /api/tournaments/:id` → Get single tournament
+ `POST /api/tournaments` → Create tournament
+ `PUT /api/tournaments/:id` → Update tournament
+ `DELETE /api/tournaments/:id` → Delete tournament
+
+####  Players
+
+ `GET /api/players` → Get all players
+ `POST /api/players` → Register player
 
 ---
 
-## API Endpoints
+##  Swagger Documentation
 
-| Method | Endpoint             | Description                            |
-|--------|--------------------|----------------------------------------|
-| GET    | `/api/profile`       | Returns basic profile information      |
-| GET    | `/api/about`         | Returns about me information           |
-| GET    | `/api/projects`      | Returns a list of projects             |
-| POST   | `/api/contact`       | Accepts a contact message in JSON      |
+Swagger API documentation is available at:
+
+```
+http://localhost:5000/api-docs
+```
+
+ (Replace with deployed URL after Vercel deployment)
 
 ---
 
-## Example Requests
+## 💻 Frontend (Next.js)
 
-### 1️. GET `/api/profile`
+The frontend was built using Next.js and exported as a static site.
 
-**Browser / Postman / curl:**
+###  Important Implementation Notes
 
-```markdown
-curl https://portfolioapi-levc.onrender.com/api/profile
+* Used `output: "export"` in Next.js
+* Dynamic routes were replaced with **static pages**
+* Query parameters are used instead of dynamic routing
 
-## Response
+###  Static Pages
 
-{
-  "name": "Dawa Angchuk Sherpa",
-  "title": "Full-Stack Developer",
-  "summary": "Aspiring web developer with a passion for building interactive web applications."
-}
+* `/index.html`
+* `/home.html`
+* `/tournaments.html`
+* `/add-tournaments.html`
+* `/register.html`
+* `/edit.html?id=...`
+* `/tournament-details.html?id=...`
 
-### 2️. GET '/api/about'
-```bash
-curl https://portfolioapi-levc.onrender.com/api/about
+---
 
+##  Integration
 
-Response:
-
-{
-  "bio": "I am a student at Georgian College, learning JavaScript frameworks and backend development. I enjoy coding, music, and creative hobbies.",
-  "hobbies": ["Music", "Sketching", "Nature walks"]
-}
-```
-### 3️. GET /api/projects
-```bash
-curl https://portfolioapi-levc.onrender.com/api/projects
-
-
-Response:
-
-[
-  {
-    "id": 1,
-    "name": "Personal Portfolio Website",
-    "description": "A responsive portfolio website built with HTML, CSS, and JS.",
-    "url": "https://github.com/Ddumb/portfolio"
-  },
-  {
-    "id": 2,
-    "name": "Todo API",
-    "description": "A RESTful API for managing todo tasks using Node.js and Express.",
-    "url": "https://github.com/Ddumb/todo-api"
-  }
-]
-```
-## 4️. POST /api/contact
-```bash
-Send a contact message:
-
-curl -X POST https://portfolioapi-levc.onrender.com/api/contact \
--H "Content-Type: application/json" \
--d '{
-  "name": "Nho",
-  "email": "nho@example.com",
-  "message": "Hello! Testing contact endpoint."
-}'
-
-
-Successful Response:
-
-{
-  "message": "Contact message received successfully."
-}
+The frontend communicates with the backend using:
 
 ```
-## Error Response (empty fields):
-```bash
-{
-  "error": "Name, email, and message are required."
-}
+http://localhost:5000/api
 ```
-## Running Locally
-```bash
-1.Clone the repo:
 
-git clone https://github.com/Ddumb-new/COMP2068JSFrameworks.git
+Axios is used for API requests.
 
+---
 
-2.Navigate to the project folder:
+##  Deployment
 
-cd COMP2068JSFrameworks/ASSIGNMENT01
+The application is deployed using **Vercel**.
 
+###  Production URL
 
-3.Install dependencies:
+```
+(PASTE YOUR VERCEL LINK HERE)
+```
 
+###  Deployment Settings
+
+* Deployment Protection: **Disabled** (for public access)
+
+---
+
+##  Project Structure
+
+### Backend (ASSIGNMENT01)
+
+```
+src/
+routes/
+controllers/
+models/
+public/  ← contains frontend build
+```
+
+### Frontend (assignment2-client)
+
+```
+src/app/
+components/
+utils/
+```
+
+---
+
+##  How to Run Locally
+
+### Backend
+
+```
+cd ASSIGNMENT01
 npm install
-
-
-4.Build TypeScript:
-
-npm run build
-
-
-5.Start the server:
-
-npm start
-
-
-6.Open in browser or Postman:
-
-http://localhost:5000/api/profile
-
+npm run dev
 ```
 
-## Middleware
-```bash
-express.json() – parses incoming JSON requests
+### Frontend (Development)
 
-Custom logger middleware – logs request method, URL, and timestamp for every request
-
-app.use((req, res, next) => {
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
-  next();
-});
 ```
-## Error Handling
-```bash
-404 – Invalid route returns:
-
- {"error": "Route not found"}  
-
-
-400 – Missing required fields in POST /api/contact:
-
-{ "error": "Name, email, and message are required." }
-
-
-500 – Any server error:
-
-{ "error": "Something went wrong!" }
+cd assignment2-client
+npm install
+npm run dev
 ```
-## Version Control
-```bash
-Minimum 3 descriptive commits
 
-Pushed to GitHub before deployment
+---
 
-References / External Code
-```
-## External resources used:
-```bash
-Express.js Documentation
+##  Features Implemented
 
-TypeScript Documentation
+ Full CRUD for tournaments
+ Player registration
+ Static frontend export
+ Backend + frontend integration
+ Deployment-ready structure
 
-ChatGPT was used for guidance and also in this readme file, took help to make those file structure and table for ebdpoint functions(cited here)
+---
 
-Author: Dawa Angchuk Sherpa
-Course: COMP 2068 – JavaScript Frameworks
-Date: February 2026
+##  Notes
+
+ Dynamic routes were converted to static pages due to Next.js export limitations
+Query parameters (`?id=`) are used for edit and detail pages
+ Frontend build is served from backend `/public` folder
+
+---
+
+##  Author
+
+Student Name: Dawa Angchuk Sherpa
+Student Number: 200591283
+Course: JavaScript Frameworks
+Assignment: Assignment 2
+
+---
