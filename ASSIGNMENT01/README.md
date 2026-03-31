@@ -10,18 +10,18 @@ March 30, 2026
 
 This project is a full-stack Tournament Management System built using:
 
-* **Backend:** Node.js, Express, MongoDB
-* **Frontend:** Next.js (React)
-* **Deployment:** Vercel
+ **Backend:** Node.js, Express, MongoDB
+ **Frontend:** Next.js (React)
+ **Deployment:** Vercel
 
 The application allows users to:
 
-* Create tournaments
-* View tournaments
-* Edit tournaments
-* Delete tournaments
-* Register players
-* View tournament details
+ Create tournaments
+View tournaments
+ Edit tournaments
+ Delete tournaments
+ Register players
+ View tournament details
 
 ---
 
@@ -70,19 +70,19 @@ The frontend was built using Next.js and exported as a static site.
 
 ###  Important Implementation Notes
 
-* Used `output: "export"` in Next.js
-* Dynamic routes were replaced with **static pages**
-* Query parameters are used instead of dynamic routing
+ Used `output: "export"` in Next.js
+Dynamic routes were replaced with **static pages**
+ Query parameters are used instead of dynamic routing
 
 ###  Static Pages
 
-* `/index.html`
-* `/home.html`
-* `/tournaments.html`
-* `/add-tournaments.html`
-* `/register.html`
-* `/edit.html?id=...`
-* `/tournament-details.html?id=...`
+`/index.html`
+ `/home.html`
+ `/tournaments.html`
+ `/add-tournaments.html`
+ `/register.html`
+ `/edit.html?id=...`
+ `/tournament-details.html?id=...`
 
 ---
 
@@ -110,7 +110,7 @@ The application is deployed using **Vercel**.
 
 ###  Deployment Settings
 
-* Deployment Protection: **Disabled** (for public access)
+ Deployment Protection: **Disabled** (for public access)
 
 ---
 
