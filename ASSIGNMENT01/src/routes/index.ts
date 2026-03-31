@@ -6,8 +6,8 @@ import tournamentRoutes from "./tournamentRoutes";
 const router = Router();
 
 
-router.use("/api/tournaments", tournamentRoutes);
+router.use("/tournaments", tournamentRoutes);
 
-router.use("/api/players", playerRoutes);
+router.use("/players", playerRoutes);
 
 export default router;
