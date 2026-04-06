@@ -13,7 +13,7 @@ export default function TournamentDetails() {
 
     if (id) {
       axios
-        .get(`http://localhost:5000/api/tournaments/${id}`)
+        .get(`/api/tournaments/${id}`)
         .then((res) => setTournament(res.data))
         .catch((err) => console.error(err));
     }

@@ -15,7 +15,7 @@ export default function RegisterPage() {
 
   useEffect(() => {
     const fetchTournaments = async () => {
-      const res = await axios.get("http://localhost:5000/api/tournaments");
+      const res = await axios.get("/api/tournaments");
       setTournaments(res.data);
     };
 
@@ -33,7 +33,7 @@ export default function RegisterPage() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/api/players", formData);
+      await axios.post("/api/players", formData);
       alert("Player registered successfully!");
 
       // optional reset

@@ -31,19 +31,19 @@ export default function Navbar() {
 
       {/*NAV LINKS */}
       <div style={{ display: "flex", gap: "25px" }}>
-        <Link href="/home" style={{ color: "white", textDecoration: "none" }}>
+        <Link href="/home.html" style={{ color: "white", textDecoration: "none" }}>
           Home
         </Link>
 
-        <Link href="/tournaments" style={{ color: "white", textDecoration: "none" }}>
+        <Link href="/tournaments.html" style={{ color: "white", textDecoration: "none" }}>
           Tournaments
         </Link>
 
-        <Link href="/add-tournaments" style={{ color: "white", textDecoration: "none" }}>
+        <Link href="/add-tournaments.html" style={{ color: "white", textDecoration: "none" }}>
           Add Tournament
         </Link>
 
-        <Link href="/register" style={{ color: "white", textDecoration: "none" }}>
+        <Link href="/register.html" style={{ color: "white", textDecoration: "none" }}>
           Register
         </Link>
       </div>

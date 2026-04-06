@@ -25,13 +25,13 @@ export default function AddTournamentPage() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/api/tournaments", {
+      await axios.post("/api/tournaments", {
         ...formData,
         maxPlayers: Number(formData.maxPlayers),
       });
 
       alert("Tournament created successfully!");
-      router.push("/tournaments");
+      window.location.href ="/tournaments.html";
     } catch (error) {
       console.error("Error creating tournament", error);
     }

@@ -8,11 +8,11 @@ export default function TournamentsPage() {
   const [tournaments, setTournaments] = useState<any[]>([]);
   const [players, setPlayers] = useState<any[]>([]);
 
-  // 🔹 Fetch data
+  //  Fetch data
   const fetchData = async () => {
     try {
       const tRes = await getTournaments();
-      const pRes = await axios.get("http://localhost:5000/api/players");
+      const pRes = await axios.get("/api/players");
 
       setTournaments(tRes.data);
       setPlayers(pRes.data);
@@ -25,14 +25,14 @@ export default function TournamentsPage() {
     fetchData();
   }, []);
 
-  // 🔹 Delete
+  //  Delete
   const handleDelete = async (id: string, e: any) => {
     e.stopPropagation(); // 🔥 prevent card click
     await deleteTournament(id);
     fetchData();
   };
 
-  // 🔹 Count players
+  //  Count players
   const getPlayerCount = (tournamentId: string) => {
     return players.filter((p) => {
       if (!p.tournamentId) return false;
@@ -45,7 +45,7 @@ export default function TournamentsPage() {
     }).length;
   };
 
-  // 🔹 Random images
+  //  Random images
   const images = [
     "/game1.jpg",
     "/game2.jpg",
@@ -97,7 +97,7 @@ export default function TournamentsPage() {
               boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
             }}
           >
-            {/* 🖼 Image */}
+            {/*  Image */}
             <img
               src={images[index % images.length]}
               alt="game"
@@ -113,13 +113,13 @@ export default function TournamentsPage() {
             <h2>{tournament.name}</h2>
             <p>{tournament.game}</p>
 
-            {/* 👥 Player Count */}
+            {/*  Player Count */}
             <p>
               👥 Players: {getPlayerCount(tournament._id)} /{" "}
               {tournament.maxPlayers}
             </p>
 
-            {/* 🔘 Buttons */}
+            {/*  Buttons */}
             <div style={{ marginTop: "10px" }}>
               {/* ✏️ EDIT (STATIC) */}
               <button
@@ -132,7 +132,7 @@ export default function TournamentsPage() {
                 Edit
               </button>
 
-              {/* 🗑 DELETE */}
+              {/* DELETE */}
               <button
                 onClick={(e) => handleDelete(tournament._id, e)}
               >

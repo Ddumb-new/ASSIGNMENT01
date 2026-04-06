@@ -23,7 +23,7 @@ export default function EditPage() {
 
       // Fetch tournament
       axios
-        .get(`http://localhost:5000/api/tournaments/${tournamentId}`)
+        .get(`/api/tournaments/${tournamentId}`)
         .then((res) => {
           setFormData({
             name: res.data.name,
@@ -50,7 +50,7 @@ export default function EditPage() {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/tournaments/${id}`,
+        `/api/tournaments/${id}`,
         {
           ...formData,
           maxPlayers: Number(formData.maxPlayers),
